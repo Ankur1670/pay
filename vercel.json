@@ -1,0 +1,31 @@
+{
+    "builds": [
+      {
+        "src": "server/api/orders.js",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "server/api/capture.js",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "client/**/*",
+        "use": "@vercel/static"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/orders",
+        "dest": "/server/api/orders.js"
+      },
+      {
+        "src": "/api/orders/:orderID/capture",
+        "dest": "/server/api/capture.js"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/client/$1"
+      }
+    ]
+  }
+  
